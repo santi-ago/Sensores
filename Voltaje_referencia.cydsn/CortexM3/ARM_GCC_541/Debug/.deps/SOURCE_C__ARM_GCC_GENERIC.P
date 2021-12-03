@@ -1,0 +1,60 @@
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/CortexM3/ARM_GCC_541/Debug/main.o : D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/ADC.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/ADC_IRQ.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/ADC_theACLK.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/CyDmac.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/CyFlash.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/CyLib.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/CySpc.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/LCD.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/LCD_LCDPort.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/LCD_LCDPort_aliases.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/Opamp_1.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/Pin_1.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/Pin_1_aliases.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cmsis_armcc.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cmsis_compiler.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cmsis_gcc.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/core_cm3.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/core_cm3_psoc5.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cyPm.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cy_em_eeprom.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cydevice.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cydevice_trm.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cydisabledsheets.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cyfitter.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cyfitter_cfg.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cypins.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cytypes.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/project.h D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/main.c 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/ADC.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/ADC_IRQ.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/ADC_theACLK.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/CyDmac.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/CyFlash.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/CyLib.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/CySpc.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/LCD.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/LCD_LCDPort.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/LCD_LCDPort_aliases.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/Opamp_1.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/Pin_1.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/Pin_1_aliases.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cmsis_armcc.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cmsis_compiler.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cmsis_gcc.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/core_cm3.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/core_cm3_psoc5.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cyPm.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cy_em_eeprom.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cydevice.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cydevice_trm.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cydisabledsheets.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cyfitter.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cyfitter_cfg.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cypins.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/cytypes.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/Generated_Source/PSoC5/project.h : 
+
+D:/Universidad/Sensores/PSoC/Sensores/Voltaje_referencia.cydsn/main.c : 
+

@@ -1,0 +1,9 @@
+D:\Universidad\Sensores\PSoC\Sensores\Voltaje_referencia.cydsn\Voltaje_referencia.cyprj|66a95b22-5edb-43e0-af87-636f27dbc63e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|77a1036e-817d-4579-89dc-e44cd133ca94
+C:\Users\Santiago\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|d3cefb1c-fe5a-437f-a6b5-e9c7355f6aa0
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|45eac87a-0b29-47cf-8934-4602457a443f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|92fde7d4-1fd5-4bdb-95f9-59a7b98048d2
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|44ef6ba1-319a-4c9b-b171-e9e0a0dd00fa
+D:\Universidad\Sensores\PSoC\Sensores\Practica_1.1.cydsn\Practica_1.1.cyprj|bdf4c280-fa4b-4d83-9c3b-d331c78d4d01
+D:\Universidad\Sensores\PSoC\Sensores\Practica_1.2.cydsn\Practica_1.2.cyprj|020ef5e6-7b22-42c8-85cf-5f0095cef0ed
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\psoc3\AnalogDevice\PSoC35AnalogDevice.cylib\PSoC35AnalogDevice.cyprj|338855bf-57ba-4f8d-8035-3688f212c876

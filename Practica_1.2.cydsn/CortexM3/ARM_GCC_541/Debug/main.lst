@@ -1,0 +1,1211 @@
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB63:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** uint16 VALADC = 0;
+  14:main.c        **** uint16 Temp = 0;
+  15:main.c        **** 
+  16:main.c        **** int main(void)
+  17:main.c        **** {
+  28              		.loc 1 17 0
+  29              		.cfi_startproc
+  30              		@ Volatile: function does not return.
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  18:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  37              		.loc 1 18 0
+  38              		.syntax unified
+  39              	@ 18 "main.c" 1
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 2
+
+
+  40 0002 62B6     		CPSIE   i
+  41              	@ 0 "" 2
+  19:main.c        **** 
+  20:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  21:main.c        ****     ADC_Start();
+  42              		.loc 1 21 0
+  43              		.thumb
+  44              		.syntax unified
+  45 0004 FFF7FEFF 		bl	ADC_Start
+  46              	.LVL0:
+  22:main.c        ****     LCD_Start();
+  47              		.loc 1 22 0
+  48 0008 FFF7FEFF 		bl	LCD_Start
+  49              	.LVL1:
+  23:main.c        ****     Opamp_1_Start();
+  50              		.loc 1 23 0
+  51 000c FFF7FEFF 		bl	Opamp_1_Start
+  52              	.LVL2:
+  24:main.c        ****     Opamp_2_Start();
+  53              		.loc 1 24 0
+  54 0010 FFF7FEFF 		bl	Opamp_2_Start
+  55              	.LVL3:
+  25:main.c        ****     Opamp_3_Start();
+  56              		.loc 1 25 0
+  57 0014 FFF7FEFF 		bl	Opamp_3_Start
+  58              	.LVL4:
+  59              	.L4:
+  26:main.c        ****     
+  27:main.c        ****     
+  28:main.c        ****     for(;;)
+  29:main.c        ****     {
+  30:main.c        ****         /* Place your application code here. */
+  31:main.c        ****         ADC_StartConvert();
+  60              		.loc 1 31 0
+  61 0018 FFF7FEFF 		bl	ADC_StartConvert
+  62              	.LVL5:
+  32:main.c        ****         ADC_IsEndConversion(ADC_WAIT_FOR_RESULT);
+  63              		.loc 1 32 0
+  64 001c 0020     		movs	r0, #0
+  65 001e FFF7FEFF 		bl	ADC_IsEndConversion
+  66              	.LVL6:
+  33:main.c        ****         VALADC = ADC_GetResult16();
+  67              		.loc 1 33 0
+  68 0022 FFF7FEFF 		bl	ADC_GetResult16
+  69              	.LVL7:
+  70 0026 80B2     		uxth	r0, r0
+  71 0028 3A4B     		ldr	r3, .L6
+  72 002a 1880     		strh	r0, [r3]	@ movhi
+  34:main.c        ****         if (VALADC < 909) VALADC = 909;
+  73              		.loc 1 34 0
+  74 002c B0F5637F 		cmp	r0, #908
+  75 0030 02D8     		bhi	.L2
+  76              		.loc 1 34 0 is_stmt 0 discriminator 1
+  77 0032 40F28D32 		movw	r2, #909
+  78 0036 1A80     		strh	r2, [r3]	@ movhi
+  79              	.L2:
+  35:main.c        ****         if (VALADC > 2686) VALADC = 2686;
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 3
+
+
+  80              		.loc 1 35 0 is_stmt 1
+  81 0038 364B     		ldr	r3, .L6
+  82 003a 1A88     		ldrh	r2, [r3]
+  83 003c 40F67E23 		movw	r3, #2686
+  84 0040 9A42     		cmp	r2, r3
+  85 0042 02D9     		bls	.L3
+  86              		.loc 1 35 0 is_stmt 0 discriminator 1
+  87 0044 1A46     		mov	r2, r3
+  88 0046 334B     		ldr	r3, .L6
+  89 0048 1A80     		strh	r2, [r3]	@ movhi
+  90              	.L3:
+  36:main.c        ****         Temp =  (uint32)(VALADC-909)*4000/1777;
+  91              		.loc 1 36 0 is_stmt 1
+  92 004a 324D     		ldr	r5, .L6
+  93 004c 2B88     		ldrh	r3, [r5]
+  94 004e A3F28D33 		subw	r3, r3, #909
+  95 0052 4FF47A62 		mov	r2, #4000
+  96 0056 02FB03F3 		mul	r3, r2, r3
+  97 005a 2F4A     		ldr	r2, .L6+4
+  98 005c A2FB0323 		umull	r2, r3, r2, r3
+  99 0060 5B09     		lsrs	r3, r3, #5
+ 100 0062 6B80     		strh	r3, [r5, #2]	@ movhi
+  37:main.c        ****         
+  38:main.c        ****         LCD_Position(0,0);
+ 101              		.loc 1 38 0
+ 102 0064 0021     		movs	r1, #0
+ 103 0066 0846     		mov	r0, r1
+ 104 0068 FFF7FEFF 		bl	LCD_Position
+ 105              	.LVL8:
+  39:main.c        ****         LCD_PrintString("Temp: ");
+ 106              		.loc 1 39 0
+ 107 006c 2B48     		ldr	r0, .L6+8
+ 108 006e FFF7FEFF 		bl	LCD_PrintString
+ 109              	.LVL9:
+  40:main.c        ****         LCD_PrintNumber(Temp/100);
+ 110              		.loc 1 40 0
+ 111 0072 6888     		ldrh	r0, [r5, #2]
+ 112 0074 2A4C     		ldr	r4, .L6+12
+ 113 0076 A4FB0030 		umull	r3, r0, r4, r0
+ 114 007a 4009     		lsrs	r0, r0, #5
+ 115 007c FFF7FEFF 		bl	LCD_PrintU32Number
+ 116              	.LVL10:
+  41:main.c        ****         LCD_PutChar('.');
+ 117              		.loc 1 41 0
+ 118 0080 2E20     		movs	r0, #46
+ 119 0082 FFF7FEFF 		bl	LCD_PutChar
+ 120              	.LVL11:
+  42:main.c        ****         LCD_PrintNumber(Temp/100%10);
+ 121              		.loc 1 42 0
+ 122 0086 6B88     		ldrh	r3, [r5, #2]
+ 123 0088 A4FB0323 		umull	r2, r3, r4, r3
+ 124 008c 5B09     		lsrs	r3, r3, #5
+ 125 008e 254C     		ldr	r4, .L6+16
+ 126 0090 A4FB0312 		umull	r1, r2, r4, r3
+ 127 0094 D208     		lsrs	r2, r2, #3
+ 128 0096 02EB8202 		add	r2, r2, r2, lsl #2
+ 129 009a 5000     		lsls	r0, r2, #1
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 4
+
+
+ 130 009c 181A     		subs	r0, r3, r0
+ 131 009e 80B2     		uxth	r0, r0
+ 132 00a0 FFF7FEFF 		bl	LCD_PrintU32Number
+ 133              	.LVL12:
+  43:main.c        ****         LCD_PrintNumber(Temp%10);
+ 134              		.loc 1 43 0
+ 135 00a4 6B88     		ldrh	r3, [r5, #2]
+ 136 00a6 A4FB0324 		umull	r2, r4, r4, r3
+ 137 00aa E408     		lsrs	r4, r4, #3
+ 138 00ac 04EB8404 		add	r4, r4, r4, lsl #2
+ 139 00b0 6000     		lsls	r0, r4, #1
+ 140 00b2 181A     		subs	r0, r3, r0
+ 141 00b4 80B2     		uxth	r0, r0
+ 142 00b6 FFF7FEFF 		bl	LCD_PrintU32Number
+ 143              	.LVL13:
+  44:main.c        ****         LCD_PutChar(LCD_CUSTOM_0);
+ 144              		.loc 1 44 0
+ 145 00ba 0020     		movs	r0, #0
+ 146 00bc FFF7FEFF 		bl	LCD_PutChar
+ 147              	.LVL14:
+  45:main.c        ****         LCD_PutChar('C');
+ 148              		.loc 1 45 0
+ 149 00c0 4320     		movs	r0, #67
+ 150 00c2 FFF7FEFF 		bl	LCD_PutChar
+ 151              	.LVL15:
+  46:main.c        ****         
+  47:main.c        ****         LCD_Position(1,0);
+ 152              		.loc 1 47 0
+ 153 00c6 0021     		movs	r1, #0
+ 154 00c8 0120     		movs	r0, #1
+ 155 00ca FFF7FEFF 		bl	LCD_Position
+ 156              	.LVL16:
+  48:main.c        ****         LCD_PrintString("ADC: ");
+ 157              		.loc 1 48 0
+ 158 00ce 1648     		ldr	r0, .L6+20
+ 159 00d0 FFF7FEFF 		bl	LCD_PrintString
+ 160              	.LVL17:
+  49:main.c        ****         LCD_PrintNumber(VALADC);
+ 161              		.loc 1 49 0
+ 162 00d4 2888     		ldrh	r0, [r5]
+ 163 00d6 FFF7FEFF 		bl	LCD_PrintU32Number
+ 164              	.LVL18:
+  50:main.c        ****         
+  51:main.c        ****         LCD_Position(2,0);
+ 165              		.loc 1 51 0
+ 166 00da 0021     		movs	r1, #0
+ 167 00dc 0220     		movs	r0, #2
+ 168 00de FFF7FEFF 		bl	LCD_Position
+ 169              	.LVL19:
+  52:main.c        ****         LCD_PrintString("n: 12 Res: 0.02");
+ 170              		.loc 1 52 0
+ 171 00e2 1248     		ldr	r0, .L6+24
+ 172 00e4 FFF7FEFF 		bl	LCD_PrintString
+ 173              	.LVL20:
+  53:main.c        ****         LCD_PutChar(LCD_CUSTOM_0);
+ 174              		.loc 1 53 0
+ 175 00e8 0020     		movs	r0, #0
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 5
+
+
+ 176 00ea FFF7FEFF 		bl	LCD_PutChar
+ 177              	.LVL21:
+  54:main.c        ****         LCD_PutChar('C');
+ 178              		.loc 1 54 0
+ 179 00ee 4320     		movs	r0, #67
+ 180 00f0 FFF7FEFF 		bl	LCD_PutChar
+ 181              	.LVL22:
+  55:main.c        ****         
+  56:main.c        ****         LCD_Position(3,0);
+ 182              		.loc 1 56 0
+ 183 00f4 0021     		movs	r1, #0
+ 184 00f6 0320     		movs	r0, #3
+ 185 00f8 FFF7FEFF 		bl	LCD_Position
+ 186              	.LVL23:
+  57:main.c        ****         LCD_PrintString("Vref: 4.61V");
+ 187              		.loc 1 57 0
+ 188 00fc 0C48     		ldr	r0, .L6+28
+ 189 00fe FFF7FEFF 		bl	LCD_PrintString
+ 190              	.LVL24:
+  58:main.c        ****         
+  59:main.c        ****         CyDelay(500);
+ 191              		.loc 1 59 0
+ 192 0102 4FF4FA70 		mov	r0, #500
+ 193 0106 FFF7FEFF 		bl	CyDelay
+ 194              	.LVL25:
+  60:main.c        ****         LCD_ClearDisplay();
+ 195              		.loc 1 60 0
+ 196 010a 0120     		movs	r0, #1
+ 197 010c FFF7FEFF 		bl	LCD_WriteControl
+ 198              	.LVL26:
+  61:main.c        ****         
+  62:main.c        ****     }
+ 199              		.loc 1 62 0
+ 200 0110 82E7     		b	.L4
+ 201              	.L7:
+ 202 0112 00BF     		.align	2
+ 203              	.L6:
+ 204 0114 00000000 		.word	.LANCHOR0
+ 205 0118 112A9C04 		.word	77343249
+ 206 011c 00000000 		.word	.LC0
+ 207 0120 1F85EB51 		.word	1374389535
+ 208 0124 CDCCCCCC 		.word	-858993459
+ 209 0128 08000000 		.word	.LC1
+ 210 012c 10000000 		.word	.LC2
+ 211 0130 20000000 		.word	.LC3
+ 212              		.cfi_endproc
+ 213              	.LFE63:
+ 214              		.size	main, .-main
+ 215              		.global	Temp
+ 216              		.global	VALADC
+ 217              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 218              		.align	2
+ 219              	.LC0:
+ 220 0000 54656D70 		.ascii	"Temp: \000"
+ 220      3A2000
+ 221 0007 00       		.space	1
+ 222              	.LC1:
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 6
+
+
+ 223 0008 4144433A 		.ascii	"ADC: \000"
+ 223      2000
+ 224 000e 0000     		.space	2
+ 225              	.LC2:
+ 226 0010 6E3A2031 		.ascii	"n: 12 Res: 0.02\000"
+ 226      32205265 
+ 226      733A2030 
+ 226      2E303200 
+ 227              	.LC3:
+ 228 0020 56726566 		.ascii	"Vref: 4.61V\000"
+ 228      3A20342E 
+ 228      36315600 
+ 229              		.bss
+ 230              		.align	1
+ 231              		.set	.LANCHOR0,. + 0
+ 232              		.type	VALADC, %object
+ 233              		.size	VALADC, 2
+ 234              	VALADC:
+ 235 0000 0000     		.space	2
+ 236              		.type	Temp, %object
+ 237              		.size	Temp, 2
+ 238              	Temp:
+ 239 0002 0000     		.space	2
+ 240              		.text
+ 241              	.Letext0:
+ 242              		.file 2 "d:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 243              		.file 3 "d:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 244              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 245              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 246              		.file 6 "Generated_Source\\PSoC5/ADC.h"
+ 247              		.file 7 "Generated_Source\\PSoC5/LCD.h"
+ 248              		.file 8 "Generated_Source\\PSoC5/Opamp_1.h"
+ 249              		.file 9 "Generated_Source\\PSoC5/Opamp_2.h"
+ 250              		.file 10 "Generated_Source\\PSoC5/Opamp_3.h"
+ 251              		.file 11 "Generated_Source\\PSoC5/CyLib.h"
+ 252              		.section	.debug_info,"",%progbits
+ 253              	.Ldebug_info0:
+ 254 0000 58030000 		.4byte	0x358
+ 255 0004 0400     		.2byte	0x4
+ 256 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 257 000a 04       		.byte	0x4
+ 258 000b 01       		.uleb128 0x1
+ 259 000c 6B000000 		.4byte	.LASF35
+ 260 0010 0C       		.byte	0xc
+ 261 0011 11020000 		.4byte	.LASF36
+ 262 0015 1D020000 		.4byte	.LASF37
+ 263 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 264 001d 00000000 		.4byte	0
+ 265 0021 00000000 		.4byte	.Ldebug_line0
+ 266 0025 02       		.uleb128 0x2
+ 267 0026 01       		.byte	0x1
+ 268 0027 06       		.byte	0x6
+ 269 0028 75020000 		.4byte	.LASF0
+ 270 002c 02       		.uleb128 0x2
+ 271 002d 01       		.byte	0x1
+ 272 002e 08       		.byte	0x8
+ 273 002f 4E010000 		.4byte	.LASF1
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 7
+
+
+ 274 0033 02       		.uleb128 0x2
+ 275 0034 02       		.byte	0x2
+ 276 0035 05       		.byte	0x5
+ 277 0036 6E010000 		.4byte	.LASF2
+ 278 003a 02       		.uleb128 0x2
+ 279 003b 02       		.byte	0x2
+ 280 003c 07       		.byte	0x7
+ 281 003d 1E010000 		.4byte	.LASF3
+ 282 0041 03       		.uleb128 0x3
+ 283 0042 11000000 		.4byte	.LASF9
+ 284 0046 02       		.byte	0x2
+ 285 0047 3F       		.byte	0x3f
+ 286 0048 4C000000 		.4byte	0x4c
+ 287 004c 02       		.uleb128 0x2
+ 288 004d 04       		.byte	0x4
+ 289 004e 05       		.byte	0x5
+ 290 004f 60020000 		.4byte	.LASF4
+ 291 0053 02       		.uleb128 0x2
+ 292 0054 04       		.byte	0x4
+ 293 0055 07       		.byte	0x7
+ 294 0056 5C010000 		.4byte	.LASF5
+ 295 005a 02       		.uleb128 0x2
+ 296 005b 08       		.byte	0x8
+ 297 005c 05       		.byte	0x5
+ 298 005d 03020000 		.4byte	.LASF6
+ 299 0061 02       		.uleb128 0x2
+ 300 0062 08       		.byte	0x8
+ 301 0063 07       		.byte	0x7
+ 302 0064 A8010000 		.4byte	.LASF7
+ 303 0068 04       		.uleb128 0x4
+ 304 0069 04       		.byte	0x4
+ 305 006a 05       		.byte	0x5
+ 306 006b 696E7400 		.ascii	"int\000"
+ 307 006f 02       		.uleb128 0x2
+ 308 0070 04       		.byte	0x4
+ 309 0071 07       		.byte	0x7
+ 310 0072 9B010000 		.4byte	.LASF8
+ 311 0076 03       		.uleb128 0x3
+ 312 0077 3E000000 		.4byte	.LASF10
+ 313 007b 03       		.byte	0x3
+ 314 007c 2C       		.byte	0x2c
+ 315 007d 41000000 		.4byte	0x41
+ 316 0081 05       		.uleb128 0x5
+ 317 0082 88010000 		.4byte	.LASF11
+ 318 0086 04       		.byte	0x4
+ 319 0087 E901     		.2byte	0x1e9
+ 320 0089 3A000000 		.4byte	0x3a
+ 321 008d 05       		.uleb128 0x5
+ 322 008e 8F010000 		.4byte	.LASF12
+ 323 0092 04       		.byte	0x4
+ 324 0093 EA01     		.2byte	0x1ea
+ 325 0095 53000000 		.4byte	0x53
+ 326 0099 02       		.uleb128 0x2
+ 327 009a 04       		.byte	0x4
+ 328 009b 04       		.byte	0x4
+ 329 009c 4D000000 		.4byte	.LASF13
+ 330 00a0 02       		.uleb128 0x2
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 8
+
+
+ 331 00a1 08       		.byte	0x8
+ 332 00a2 04       		.byte	0x4
+ 333 00a3 29000000 		.4byte	.LASF14
+ 334 00a7 02       		.uleb128 0x2
+ 335 00a8 01       		.byte	0x1
+ 336 00a9 08       		.byte	0x8
+ 337 00aa 18020000 		.4byte	.LASF15
+ 338 00ae 02       		.uleb128 0x2
+ 339 00af 08       		.byte	0x8
+ 340 00b0 04       		.byte	0x4
+ 341 00b1 69020000 		.4byte	.LASF16
+ 342 00b5 02       		.uleb128 0x2
+ 343 00b6 04       		.byte	0x4
+ 344 00b7 07       		.byte	0x7
+ 345 00b8 FA010000 		.4byte	.LASF17
+ 346 00bc 06       		.uleb128 0x6
+ 347 00bd 96010000 		.4byte	.LASF38
+ 348 00c1 01       		.byte	0x1
+ 349 00c2 10       		.byte	0x10
+ 350 00c3 68000000 		.4byte	0x68
+ 351 00c7 00000000 		.4byte	.LFB63
+ 352 00cb 34010000 		.4byte	.LFE63-.LFB63
+ 353 00cf 01       		.uleb128 0x1
+ 354 00d0 9C       		.byte	0x9c
+ 355 00d1 8E020000 		.4byte	0x28e
+ 356 00d5 07       		.uleb128 0x7
+ 357 00d6 08000000 		.4byte	.LVL0
+ 358 00da C1020000 		.4byte	0x2c1
+ 359 00de 07       		.uleb128 0x7
+ 360 00df 0C000000 		.4byte	.LVL1
+ 361 00e3 CC020000 		.4byte	0x2cc
+ 362 00e7 07       		.uleb128 0x7
+ 363 00e8 10000000 		.4byte	.LVL2
+ 364 00ec D7020000 		.4byte	0x2d7
+ 365 00f0 07       		.uleb128 0x7
+ 366 00f1 14000000 		.4byte	.LVL3
+ 367 00f5 E2020000 		.4byte	0x2e2
+ 368 00f9 07       		.uleb128 0x7
+ 369 00fa 18000000 		.4byte	.LVL4
+ 370 00fe ED020000 		.4byte	0x2ed
+ 371 0102 07       		.uleb128 0x7
+ 372 0103 1C000000 		.4byte	.LVL5
+ 373 0107 F8020000 		.4byte	0x2f8
+ 374 010b 08       		.uleb128 0x8
+ 375 010c 22000000 		.4byte	.LVL6
+ 376 0110 03030000 		.4byte	0x303
+ 377 0114 1E010000 		.4byte	0x11e
+ 378 0118 09       		.uleb128 0x9
+ 379 0119 01       		.uleb128 0x1
+ 380 011a 50       		.byte	0x50
+ 381 011b 01       		.uleb128 0x1
+ 382 011c 30       		.byte	0x30
+ 383 011d 00       		.byte	0
+ 384 011e 07       		.uleb128 0x7
+ 385 011f 26000000 		.4byte	.LVL7
+ 386 0123 0E030000 		.4byte	0x30e
+ 387 0127 08       		.uleb128 0x8
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 9
+
+
+ 388 0128 6C000000 		.4byte	.LVL8
+ 389 012c 19030000 		.4byte	0x319
+ 390 0130 3F010000 		.4byte	0x13f
+ 391 0134 09       		.uleb128 0x9
+ 392 0135 01       		.uleb128 0x1
+ 393 0136 50       		.byte	0x50
+ 394 0137 01       		.uleb128 0x1
+ 395 0138 30       		.byte	0x30
+ 396 0139 09       		.uleb128 0x9
+ 397 013a 01       		.uleb128 0x1
+ 398 013b 51       		.byte	0x51
+ 399 013c 01       		.uleb128 0x1
+ 400 013d 30       		.byte	0x30
+ 401 013e 00       		.byte	0
+ 402 013f 08       		.uleb128 0x8
+ 403 0140 72000000 		.4byte	.LVL9
+ 404 0144 24030000 		.4byte	0x324
+ 405 0148 56010000 		.4byte	0x156
+ 406 014c 09       		.uleb128 0x9
+ 407 014d 01       		.uleb128 0x1
+ 408 014e 50       		.byte	0x50
+ 409 014f 05       		.uleb128 0x5
+ 410 0150 03       		.byte	0x3
+ 411 0151 00000000 		.4byte	.LC0
+ 412 0155 00       		.byte	0
+ 413 0156 07       		.uleb128 0x7
+ 414 0157 80000000 		.4byte	.LVL10
+ 415 015b 2F030000 		.4byte	0x32f
+ 416 015f 08       		.uleb128 0x8
+ 417 0160 86000000 		.4byte	.LVL11
+ 418 0164 3A030000 		.4byte	0x33a
+ 419 0168 73010000 		.4byte	0x173
+ 420 016c 09       		.uleb128 0x9
+ 421 016d 01       		.uleb128 0x1
+ 422 016e 50       		.byte	0x50
+ 423 016f 02       		.uleb128 0x2
+ 424 0170 08       		.byte	0x8
+ 425 0171 2E       		.byte	0x2e
+ 426 0172 00       		.byte	0
+ 427 0173 07       		.uleb128 0x7
+ 428 0174 A4000000 		.4byte	.LVL12
+ 429 0178 2F030000 		.4byte	0x32f
+ 430 017c 07       		.uleb128 0x7
+ 431 017d BA000000 		.4byte	.LVL13
+ 432 0181 2F030000 		.4byte	0x32f
+ 433 0185 08       		.uleb128 0x8
+ 434 0186 C0000000 		.4byte	.LVL14
+ 435 018a 3A030000 		.4byte	0x33a
+ 436 018e 98010000 		.4byte	0x198
+ 437 0192 09       		.uleb128 0x9
+ 438 0193 01       		.uleb128 0x1
+ 439 0194 50       		.byte	0x50
+ 440 0195 01       		.uleb128 0x1
+ 441 0196 30       		.byte	0x30
+ 442 0197 00       		.byte	0
+ 443 0198 08       		.uleb128 0x8
+ 444 0199 C6000000 		.4byte	.LVL15
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 10
+
+
+ 445 019d 3A030000 		.4byte	0x33a
+ 446 01a1 AC010000 		.4byte	0x1ac
+ 447 01a5 09       		.uleb128 0x9
+ 448 01a6 01       		.uleb128 0x1
+ 449 01a7 50       		.byte	0x50
+ 450 01a8 02       		.uleb128 0x2
+ 451 01a9 08       		.byte	0x8
+ 452 01aa 43       		.byte	0x43
+ 453 01ab 00       		.byte	0
+ 454 01ac 08       		.uleb128 0x8
+ 455 01ad CE000000 		.4byte	.LVL16
+ 456 01b1 19030000 		.4byte	0x319
+ 457 01b5 C4010000 		.4byte	0x1c4
+ 458 01b9 09       		.uleb128 0x9
+ 459 01ba 01       		.uleb128 0x1
+ 460 01bb 50       		.byte	0x50
+ 461 01bc 01       		.uleb128 0x1
+ 462 01bd 31       		.byte	0x31
+ 463 01be 09       		.uleb128 0x9
+ 464 01bf 01       		.uleb128 0x1
+ 465 01c0 51       		.byte	0x51
+ 466 01c1 01       		.uleb128 0x1
+ 467 01c2 30       		.byte	0x30
+ 468 01c3 00       		.byte	0
+ 469 01c4 08       		.uleb128 0x8
+ 470 01c5 D4000000 		.4byte	.LVL17
+ 471 01c9 24030000 		.4byte	0x324
+ 472 01cd DB010000 		.4byte	0x1db
+ 473 01d1 09       		.uleb128 0x9
+ 474 01d2 01       		.uleb128 0x1
+ 475 01d3 50       		.byte	0x50
+ 476 01d4 05       		.uleb128 0x5
+ 477 01d5 03       		.byte	0x3
+ 478 01d6 08000000 		.4byte	.LC1
+ 479 01da 00       		.byte	0
+ 480 01db 07       		.uleb128 0x7
+ 481 01dc DA000000 		.4byte	.LVL18
+ 482 01e0 2F030000 		.4byte	0x32f
+ 483 01e4 08       		.uleb128 0x8
+ 484 01e5 E2000000 		.4byte	.LVL19
+ 485 01e9 19030000 		.4byte	0x319
+ 486 01ed FC010000 		.4byte	0x1fc
+ 487 01f1 09       		.uleb128 0x9
+ 488 01f2 01       		.uleb128 0x1
+ 489 01f3 50       		.byte	0x50
+ 490 01f4 01       		.uleb128 0x1
+ 491 01f5 32       		.byte	0x32
+ 492 01f6 09       		.uleb128 0x9
+ 493 01f7 01       		.uleb128 0x1
+ 494 01f8 51       		.byte	0x51
+ 495 01f9 01       		.uleb128 0x1
+ 496 01fa 30       		.byte	0x30
+ 497 01fb 00       		.byte	0
+ 498 01fc 08       		.uleb128 0x8
+ 499 01fd E8000000 		.4byte	.LVL20
+ 500 0201 24030000 		.4byte	0x324
+ 501 0205 13020000 		.4byte	0x213
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 11
+
+
+ 502 0209 09       		.uleb128 0x9
+ 503 020a 01       		.uleb128 0x1
+ 504 020b 50       		.byte	0x50
+ 505 020c 05       		.uleb128 0x5
+ 506 020d 03       		.byte	0x3
+ 507 020e 10000000 		.4byte	.LC2
+ 508 0212 00       		.byte	0
+ 509 0213 08       		.uleb128 0x8
+ 510 0214 EE000000 		.4byte	.LVL21
+ 511 0218 3A030000 		.4byte	0x33a
+ 512 021c 26020000 		.4byte	0x226
+ 513 0220 09       		.uleb128 0x9
+ 514 0221 01       		.uleb128 0x1
+ 515 0222 50       		.byte	0x50
+ 516 0223 01       		.uleb128 0x1
+ 517 0224 30       		.byte	0x30
+ 518 0225 00       		.byte	0
+ 519 0226 08       		.uleb128 0x8
+ 520 0227 F4000000 		.4byte	.LVL22
+ 521 022b 3A030000 		.4byte	0x33a
+ 522 022f 3A020000 		.4byte	0x23a
+ 523 0233 09       		.uleb128 0x9
+ 524 0234 01       		.uleb128 0x1
+ 525 0235 50       		.byte	0x50
+ 526 0236 02       		.uleb128 0x2
+ 527 0237 08       		.byte	0x8
+ 528 0238 43       		.byte	0x43
+ 529 0239 00       		.byte	0
+ 530 023a 08       		.uleb128 0x8
+ 531 023b FC000000 		.4byte	.LVL23
+ 532 023f 19030000 		.4byte	0x319
+ 533 0243 52020000 		.4byte	0x252
+ 534 0247 09       		.uleb128 0x9
+ 535 0248 01       		.uleb128 0x1
+ 536 0249 50       		.byte	0x50
+ 537 024a 01       		.uleb128 0x1
+ 538 024b 33       		.byte	0x33
+ 539 024c 09       		.uleb128 0x9
+ 540 024d 01       		.uleb128 0x1
+ 541 024e 51       		.byte	0x51
+ 542 024f 01       		.uleb128 0x1
+ 543 0250 30       		.byte	0x30
+ 544 0251 00       		.byte	0
+ 545 0252 08       		.uleb128 0x8
+ 546 0253 02010000 		.4byte	.LVL24
+ 547 0257 24030000 		.4byte	0x324
+ 548 025b 69020000 		.4byte	0x269
+ 549 025f 09       		.uleb128 0x9
+ 550 0260 01       		.uleb128 0x1
+ 551 0261 50       		.byte	0x50
+ 552 0262 05       		.uleb128 0x5
+ 553 0263 03       		.byte	0x3
+ 554 0264 20000000 		.4byte	.LC3
+ 555 0268 00       		.byte	0
+ 556 0269 08       		.uleb128 0x8
+ 557 026a 0A010000 		.4byte	.LVL25
+ 558 026e 45030000 		.4byte	0x345
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 12
+
+
+ 559 0272 7E020000 		.4byte	0x27e
+ 560 0276 09       		.uleb128 0x9
+ 561 0277 01       		.uleb128 0x1
+ 562 0278 50       		.byte	0x50
+ 563 0279 03       		.uleb128 0x3
+ 564 027a 0A       		.byte	0xa
+ 565 027b F401     		.2byte	0x1f4
+ 566 027d 00       		.byte	0
+ 567 027e 0A       		.uleb128 0xa
+ 568 027f 10010000 		.4byte	.LVL26
+ 569 0283 50030000 		.4byte	0x350
+ 570 0287 09       		.uleb128 0x9
+ 571 0288 01       		.uleb128 0x1
+ 572 0289 50       		.byte	0x50
+ 573 028a 01       		.uleb128 0x1
+ 574 028b 31       		.byte	0x31
+ 575 028c 00       		.byte	0
+ 576 028d 00       		.byte	0
+ 577 028e 0B       		.uleb128 0xb
+ 578 028f 41010000 		.4byte	.LASF18
+ 579 0293 05       		.byte	0x5
+ 580 0294 1207     		.2byte	0x712
+ 581 0296 9A020000 		.4byte	0x29a
+ 582 029a 0C       		.uleb128 0xc
+ 583 029b 76000000 		.4byte	0x76
+ 584 029f 0D       		.uleb128 0xd
+ 585 02a0 46000000 		.4byte	.LASF19
+ 586 02a4 01       		.byte	0x1
+ 587 02a5 0D       		.byte	0xd
+ 588 02a6 81000000 		.4byte	0x81
+ 589 02aa 05       		.uleb128 0x5
+ 590 02ab 03       		.byte	0x3
+ 591 02ac 00000000 		.4byte	VALADC
+ 592 02b0 0D       		.uleb128 0xd
+ 593 02b1 F5010000 		.4byte	.LASF20
+ 594 02b5 01       		.byte	0x1
+ 595 02b6 0E       		.byte	0xe
+ 596 02b7 81000000 		.4byte	0x81
+ 597 02bb 05       		.uleb128 0x5
+ 598 02bc 03       		.byte	0x3
+ 599 02bd 00000000 		.4byte	Temp
+ 600 02c1 0E       		.uleb128 0xe
+ 601 02c2 EB010000 		.4byte	.LASF21
+ 602 02c6 EB010000 		.4byte	.LASF21
+ 603 02ca 06       		.byte	0x6
+ 604 02cb 34       		.byte	0x34
+ 605 02cc 0E       		.uleb128 0xe
+ 606 02cd 53000000 		.4byte	.LASF22
+ 607 02d1 53000000 		.4byte	.LASF22
+ 608 02d5 07       		.byte	0x7
+ 609 02d6 38       		.byte	0x38
+ 610 02d7 0E       		.uleb128 0xe
+ 611 02d8 1B000000 		.4byte	.LASF23
+ 612 02dc 1B000000 		.4byte	.LASF23
+ 613 02e0 08       		.byte	0x8
+ 614 02e1 33       		.byte	0x33
+ 615 02e2 0E       		.uleb128 0xe
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 13
+
+
+ 616 02e3 30000000 		.4byte	.LASF24
+ 617 02e7 30000000 		.4byte	.LASF24
+ 618 02eb 09       		.byte	0x9
+ 619 02ec 33       		.byte	0x33
+ 620 02ed 0E       		.uleb128 0xe
+ 621 02ee 5D000000 		.4byte	.LASF25
+ 622 02f2 5D000000 		.4byte	.LASF25
+ 623 02f6 0A       		.byte	0xa
+ 624 02f7 33       		.byte	0x33
+ 625 02f8 0E       		.uleb128 0xe
+ 626 02f9 F9000000 		.4byte	.LASF26
+ 627 02fd F9000000 		.4byte	.LASF26
+ 628 0301 06       		.byte	0x6
+ 629 0302 D1       		.byte	0xd1
+ 630 0303 0E       		.uleb128 0xe
+ 631 0304 0A010000 		.4byte	.LASF27
+ 632 0308 0A010000 		.4byte	.LASF27
+ 633 030c 06       		.byte	0x6
+ 634 030d 39       		.byte	0x39
+ 635 030e 0E       		.uleb128 0xe
+ 636 030f 31010000 		.4byte	.LASF28
+ 637 0313 31010000 		.4byte	.LASF28
+ 638 0317 06       		.byte	0x6
+ 639 0318 3B       		.byte	0x3b
+ 640 0319 0E       		.uleb128 0xe
+ 641 031a BF010000 		.4byte	.LASF29
+ 642 031e BF010000 		.4byte	.LASF29
+ 643 0322 07       		.byte	0x7
+ 644 0323 3D       		.byte	0x3d
+ 645 0324 0E       		.uleb128 0xe
+ 646 0325 78010000 		.4byte	.LASF30
+ 647 0329 78010000 		.4byte	.LASF30
+ 648 032d 07       		.byte	0x7
+ 649 032e 3C       		.byte	0x3c
+ 650 032f 0E       		.uleb128 0xe
+ 651 0330 CC010000 		.4byte	.LASF31
+ 652 0334 CC010000 		.4byte	.LASF31
+ 653 0338 07       		.byte	0x7
+ 654 0339 61       		.byte	0x61
+ 655 033a 0E       		.uleb128 0xe
+ 656 033b DF010000 		.4byte	.LASF32
+ 657 033f DF010000 		.4byte	.LASF32
+ 658 0343 07       		.byte	0x7
+ 659 0344 3E       		.byte	0x3e
+ 660 0345 0E       		.uleb128 0xe
+ 661 0346 81020000 		.4byte	.LASF33
+ 662 034a 81020000 		.4byte	.LASF33
+ 663 034e 0B       		.byte	0xb
+ 664 034f 76       		.byte	0x76
+ 665 0350 0E       		.uleb128 0xe
+ 666 0351 00000000 		.4byte	.LASF34
+ 667 0355 00000000 		.4byte	.LASF34
+ 668 0359 07       		.byte	0x7
+ 669 035a 3A       		.byte	0x3a
+ 670 035b 00       		.byte	0
+ 671              		.section	.debug_abbrev,"",%progbits
+ 672              	.Ldebug_abbrev0:
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 14
+
+
+ 673 0000 01       		.uleb128 0x1
+ 674 0001 11       		.uleb128 0x11
+ 675 0002 01       		.byte	0x1
+ 676 0003 25       		.uleb128 0x25
+ 677 0004 0E       		.uleb128 0xe
+ 678 0005 13       		.uleb128 0x13
+ 679 0006 0B       		.uleb128 0xb
+ 680 0007 03       		.uleb128 0x3
+ 681 0008 0E       		.uleb128 0xe
+ 682 0009 1B       		.uleb128 0x1b
+ 683 000a 0E       		.uleb128 0xe
+ 684 000b 55       		.uleb128 0x55
+ 685 000c 17       		.uleb128 0x17
+ 686 000d 11       		.uleb128 0x11
+ 687 000e 01       		.uleb128 0x1
+ 688 000f 10       		.uleb128 0x10
+ 689 0010 17       		.uleb128 0x17
+ 690 0011 00       		.byte	0
+ 691 0012 00       		.byte	0
+ 692 0013 02       		.uleb128 0x2
+ 693 0014 24       		.uleb128 0x24
+ 694 0015 00       		.byte	0
+ 695 0016 0B       		.uleb128 0xb
+ 696 0017 0B       		.uleb128 0xb
+ 697 0018 3E       		.uleb128 0x3e
+ 698 0019 0B       		.uleb128 0xb
+ 699 001a 03       		.uleb128 0x3
+ 700 001b 0E       		.uleb128 0xe
+ 701 001c 00       		.byte	0
+ 702 001d 00       		.byte	0
+ 703 001e 03       		.uleb128 0x3
+ 704 001f 16       		.uleb128 0x16
+ 705 0020 00       		.byte	0
+ 706 0021 03       		.uleb128 0x3
+ 707 0022 0E       		.uleb128 0xe
+ 708 0023 3A       		.uleb128 0x3a
+ 709 0024 0B       		.uleb128 0xb
+ 710 0025 3B       		.uleb128 0x3b
+ 711 0026 0B       		.uleb128 0xb
+ 712 0027 49       		.uleb128 0x49
+ 713 0028 13       		.uleb128 0x13
+ 714 0029 00       		.byte	0
+ 715 002a 00       		.byte	0
+ 716 002b 04       		.uleb128 0x4
+ 717 002c 24       		.uleb128 0x24
+ 718 002d 00       		.byte	0
+ 719 002e 0B       		.uleb128 0xb
+ 720 002f 0B       		.uleb128 0xb
+ 721 0030 3E       		.uleb128 0x3e
+ 722 0031 0B       		.uleb128 0xb
+ 723 0032 03       		.uleb128 0x3
+ 724 0033 08       		.uleb128 0x8
+ 725 0034 00       		.byte	0
+ 726 0035 00       		.byte	0
+ 727 0036 05       		.uleb128 0x5
+ 728 0037 16       		.uleb128 0x16
+ 729 0038 00       		.byte	0
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 15
+
+
+ 730 0039 03       		.uleb128 0x3
+ 731 003a 0E       		.uleb128 0xe
+ 732 003b 3A       		.uleb128 0x3a
+ 733 003c 0B       		.uleb128 0xb
+ 734 003d 3B       		.uleb128 0x3b
+ 735 003e 05       		.uleb128 0x5
+ 736 003f 49       		.uleb128 0x49
+ 737 0040 13       		.uleb128 0x13
+ 738 0041 00       		.byte	0
+ 739 0042 00       		.byte	0
+ 740 0043 06       		.uleb128 0x6
+ 741 0044 2E       		.uleb128 0x2e
+ 742 0045 01       		.byte	0x1
+ 743 0046 3F       		.uleb128 0x3f
+ 744 0047 19       		.uleb128 0x19
+ 745 0048 03       		.uleb128 0x3
+ 746 0049 0E       		.uleb128 0xe
+ 747 004a 3A       		.uleb128 0x3a
+ 748 004b 0B       		.uleb128 0xb
+ 749 004c 3B       		.uleb128 0x3b
+ 750 004d 0B       		.uleb128 0xb
+ 751 004e 27       		.uleb128 0x27
+ 752 004f 19       		.uleb128 0x19
+ 753 0050 49       		.uleb128 0x49
+ 754 0051 13       		.uleb128 0x13
+ 755 0052 8701     		.uleb128 0x87
+ 756 0054 19       		.uleb128 0x19
+ 757 0055 11       		.uleb128 0x11
+ 758 0056 01       		.uleb128 0x1
+ 759 0057 12       		.uleb128 0x12
+ 760 0058 06       		.uleb128 0x6
+ 761 0059 40       		.uleb128 0x40
+ 762 005a 18       		.uleb128 0x18
+ 763 005b 9742     		.uleb128 0x2117
+ 764 005d 19       		.uleb128 0x19
+ 765 005e 01       		.uleb128 0x1
+ 766 005f 13       		.uleb128 0x13
+ 767 0060 00       		.byte	0
+ 768 0061 00       		.byte	0
+ 769 0062 07       		.uleb128 0x7
+ 770 0063 898201   		.uleb128 0x4109
+ 771 0066 00       		.byte	0
+ 772 0067 11       		.uleb128 0x11
+ 773 0068 01       		.uleb128 0x1
+ 774 0069 31       		.uleb128 0x31
+ 775 006a 13       		.uleb128 0x13
+ 776 006b 00       		.byte	0
+ 777 006c 00       		.byte	0
+ 778 006d 08       		.uleb128 0x8
+ 779 006e 898201   		.uleb128 0x4109
+ 780 0071 01       		.byte	0x1
+ 781 0072 11       		.uleb128 0x11
+ 782 0073 01       		.uleb128 0x1
+ 783 0074 31       		.uleb128 0x31
+ 784 0075 13       		.uleb128 0x13
+ 785 0076 01       		.uleb128 0x1
+ 786 0077 13       		.uleb128 0x13
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 16
+
+
+ 787 0078 00       		.byte	0
+ 788 0079 00       		.byte	0
+ 789 007a 09       		.uleb128 0x9
+ 790 007b 8A8201   		.uleb128 0x410a
+ 791 007e 00       		.byte	0
+ 792 007f 02       		.uleb128 0x2
+ 793 0080 18       		.uleb128 0x18
+ 794 0081 9142     		.uleb128 0x2111
+ 795 0083 18       		.uleb128 0x18
+ 796 0084 00       		.byte	0
+ 797 0085 00       		.byte	0
+ 798 0086 0A       		.uleb128 0xa
+ 799 0087 898201   		.uleb128 0x4109
+ 800 008a 01       		.byte	0x1
+ 801 008b 11       		.uleb128 0x11
+ 802 008c 01       		.uleb128 0x1
+ 803 008d 31       		.uleb128 0x31
+ 804 008e 13       		.uleb128 0x13
+ 805 008f 00       		.byte	0
+ 806 0090 00       		.byte	0
+ 807 0091 0B       		.uleb128 0xb
+ 808 0092 34       		.uleb128 0x34
+ 809 0093 00       		.byte	0
+ 810 0094 03       		.uleb128 0x3
+ 811 0095 0E       		.uleb128 0xe
+ 812 0096 3A       		.uleb128 0x3a
+ 813 0097 0B       		.uleb128 0xb
+ 814 0098 3B       		.uleb128 0x3b
+ 815 0099 05       		.uleb128 0x5
+ 816 009a 49       		.uleb128 0x49
+ 817 009b 13       		.uleb128 0x13
+ 818 009c 3F       		.uleb128 0x3f
+ 819 009d 19       		.uleb128 0x19
+ 820 009e 3C       		.uleb128 0x3c
+ 821 009f 19       		.uleb128 0x19
+ 822 00a0 00       		.byte	0
+ 823 00a1 00       		.byte	0
+ 824 00a2 0C       		.uleb128 0xc
+ 825 00a3 35       		.uleb128 0x35
+ 826 00a4 00       		.byte	0
+ 827 00a5 49       		.uleb128 0x49
+ 828 00a6 13       		.uleb128 0x13
+ 829 00a7 00       		.byte	0
+ 830 00a8 00       		.byte	0
+ 831 00a9 0D       		.uleb128 0xd
+ 832 00aa 34       		.uleb128 0x34
+ 833 00ab 00       		.byte	0
+ 834 00ac 03       		.uleb128 0x3
+ 835 00ad 0E       		.uleb128 0xe
+ 836 00ae 3A       		.uleb128 0x3a
+ 837 00af 0B       		.uleb128 0xb
+ 838 00b0 3B       		.uleb128 0x3b
+ 839 00b1 0B       		.uleb128 0xb
+ 840 00b2 49       		.uleb128 0x49
+ 841 00b3 13       		.uleb128 0x13
+ 842 00b4 3F       		.uleb128 0x3f
+ 843 00b5 19       		.uleb128 0x19
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 17
+
+
+ 844 00b6 02       		.uleb128 0x2
+ 845 00b7 18       		.uleb128 0x18
+ 846 00b8 00       		.byte	0
+ 847 00b9 00       		.byte	0
+ 848 00ba 0E       		.uleb128 0xe
+ 849 00bb 2E       		.uleb128 0x2e
+ 850 00bc 00       		.byte	0
+ 851 00bd 3F       		.uleb128 0x3f
+ 852 00be 19       		.uleb128 0x19
+ 853 00bf 3C       		.uleb128 0x3c
+ 854 00c0 19       		.uleb128 0x19
+ 855 00c1 6E       		.uleb128 0x6e
+ 856 00c2 0E       		.uleb128 0xe
+ 857 00c3 03       		.uleb128 0x3
+ 858 00c4 0E       		.uleb128 0xe
+ 859 00c5 3A       		.uleb128 0x3a
+ 860 00c6 0B       		.uleb128 0xb
+ 861 00c7 3B       		.uleb128 0x3b
+ 862 00c8 0B       		.uleb128 0xb
+ 863 00c9 00       		.byte	0
+ 864 00ca 00       		.byte	0
+ 865 00cb 00       		.byte	0
+ 866              		.section	.debug_aranges,"",%progbits
+ 867 0000 1C000000 		.4byte	0x1c
+ 868 0004 0200     		.2byte	0x2
+ 869 0006 00000000 		.4byte	.Ldebug_info0
+ 870 000a 04       		.byte	0x4
+ 871 000b 00       		.byte	0
+ 872 000c 0000     		.2byte	0
+ 873 000e 0000     		.2byte	0
+ 874 0010 00000000 		.4byte	.LFB63
+ 875 0014 34010000 		.4byte	.LFE63-.LFB63
+ 876 0018 00000000 		.4byte	0
+ 877 001c 00000000 		.4byte	0
+ 878              		.section	.debug_ranges,"",%progbits
+ 879              	.Ldebug_ranges0:
+ 880 0000 00000000 		.4byte	.LFB63
+ 881 0004 34010000 		.4byte	.LFE63
+ 882 0008 00000000 		.4byte	0
+ 883 000c 00000000 		.4byte	0
+ 884              		.section	.debug_line,"",%progbits
+ 885              	.Ldebug_line0:
+ 886 0000 D3010000 		.section	.debug_str,"MS",%progbits,1
+ 886      02009001 
+ 886      00000201 
+ 886      FB0E0D00 
+ 886      01010101 
+ 887              	.LASF34:
+ 888 0000 4C43445F 		.ascii	"LCD_WriteControl\000"
+ 888      57726974 
+ 888      65436F6E 
+ 888      74726F6C 
+ 888      00
+ 889              	.LASF9:
+ 890 0011 5F5F696E 		.ascii	"__int32_t\000"
+ 890      7433325F 
+ 890      7400
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 18
+
+
+ 891              	.LASF23:
+ 892 001b 4F70616D 		.ascii	"Opamp_1_Start\000"
+ 892      705F315F 
+ 892      53746172 
+ 892      7400
+ 893              	.LASF14:
+ 894 0029 646F7562 		.ascii	"double\000"
+ 894      6C6500
+ 895              	.LASF24:
+ 896 0030 4F70616D 		.ascii	"Opamp_2_Start\000"
+ 896      705F325F 
+ 896      53746172 
+ 896      7400
+ 897              	.LASF10:
+ 898 003e 696E7433 		.ascii	"int32_t\000"
+ 898      325F7400 
+ 899              	.LASF19:
+ 900 0046 56414C41 		.ascii	"VALADC\000"
+ 900      444300
+ 901              	.LASF13:
+ 902 004d 666C6F61 		.ascii	"float\000"
+ 902      7400
+ 903              	.LASF22:
+ 904 0053 4C43445F 		.ascii	"LCD_Start\000"
+ 904      53746172 
+ 904      7400
+ 905              	.LASF25:
+ 906 005d 4F70616D 		.ascii	"Opamp_3_Start\000"
+ 906      705F335F 
+ 906      53746172 
+ 906      7400
+ 907              	.LASF35:
+ 908 006b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 908      43313120 
+ 908      352E342E 
+ 908      31203230 
+ 908      31363036 
+ 909 009e 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 909      20726576 
+ 909      6973696F 
+ 909      6E203233 
+ 909      37373135 
+ 910 00d1 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 910      66756E63 
+ 910      74696F6E 
+ 910      2D736563 
+ 910      74696F6E 
+ 911              	.LASF26:
+ 912 00f9 4144435F 		.ascii	"ADC_StartConvert\000"
+ 912      53746172 
+ 912      74436F6E 
+ 912      76657274 
+ 912      00
+ 913              	.LASF27:
+ 914 010a 4144435F 		.ascii	"ADC_IsEndConversion\000"
+ 914      4973456E 
+ 914      64436F6E 
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 19
+
+
+ 914      76657273 
+ 914      696F6E00 
+ 915              	.LASF3:
+ 916 011e 73686F72 		.ascii	"short unsigned int\000"
+ 916      7420756E 
+ 916      7369676E 
+ 916      65642069 
+ 916      6E7400
+ 917              	.LASF28:
+ 918 0131 4144435F 		.ascii	"ADC_GetResult16\000"
+ 918      47657452 
+ 918      6573756C 
+ 918      74313600 
+ 919              	.LASF18:
+ 920 0141 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 920      52784275 
+ 920      66666572 
+ 920      00
+ 921              	.LASF1:
+ 922 014e 756E7369 		.ascii	"unsigned char\000"
+ 922      676E6564 
+ 922      20636861 
+ 922      7200
+ 923              	.LASF5:
+ 924 015c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 924      20756E73 
+ 924      69676E65 
+ 924      6420696E 
+ 924      7400
+ 925              	.LASF2:
+ 926 016e 73686F72 		.ascii	"short int\000"
+ 926      7420696E 
+ 926      7400
+ 927              	.LASF30:
+ 928 0178 4C43445F 		.ascii	"LCD_PrintString\000"
+ 928      5072696E 
+ 928      74537472 
+ 928      696E6700 
+ 929              	.LASF11:
+ 930 0188 75696E74 		.ascii	"uint16\000"
+ 930      313600
+ 931              	.LASF12:
+ 932 018f 75696E74 		.ascii	"uint32\000"
+ 932      333200
+ 933              	.LASF38:
+ 934 0196 6D61696E 		.ascii	"main\000"
+ 934      00
+ 935              	.LASF8:
+ 936 019b 756E7369 		.ascii	"unsigned int\000"
+ 936      676E6564 
+ 936      20696E74 
+ 936      00
+ 937              	.LASF7:
+ 938 01a8 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 938      206C6F6E 
+ 938      6720756E 
+ 938      7369676E 
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 20
+
+
+ 938      65642069 
+ 939              	.LASF29:
+ 940 01bf 4C43445F 		.ascii	"LCD_Position\000"
+ 940      506F7369 
+ 940      74696F6E 
+ 940      00
+ 941              	.LASF31:
+ 942 01cc 4C43445F 		.ascii	"LCD_PrintU32Number\000"
+ 942      5072696E 
+ 942      74553332 
+ 942      4E756D62 
+ 942      657200
+ 943              	.LASF32:
+ 944 01df 4C43445F 		.ascii	"LCD_PutChar\000"
+ 944      50757443 
+ 944      68617200 
+ 945              	.LASF21:
+ 946 01eb 4144435F 		.ascii	"ADC_Start\000"
+ 946      53746172 
+ 946      7400
+ 947              	.LASF20:
+ 948 01f5 54656D70 		.ascii	"Temp\000"
+ 948      00
+ 949              	.LASF17:
+ 950 01fa 73697A65 		.ascii	"sizetype\000"
+ 950      74797065 
+ 950      00
+ 951              	.LASF6:
+ 952 0203 6C6F6E67 		.ascii	"long long int\000"
+ 952      206C6F6E 
+ 952      6720696E 
+ 952      7400
+ 953              	.LASF36:
+ 954 0211 6D61696E 		.ascii	"main.c\000"
+ 954      2E6300
+ 955              	.LASF15:
+ 956 0218 63686172 		.ascii	"char\000"
+ 956      00
+ 957              	.LASF37:
+ 958 021d 473A5C4D 		.ascii	"G:\\Mi unidad\\2021-2\\Sensores\\Practica_1.2.cydsn"
+ 958      6920756E 
+ 958      69646164 
+ 958      5C323032 
+ 958      312D325C 
+ 959 024c 5C507261 		.ascii	"\\Practica_1.2.cydsn\000"
+ 959      63746963 
+ 959      615F312E 
+ 959      322E6379 
+ 959      64736E00 
+ 960              	.LASF4:
+ 961 0260 6C6F6E67 		.ascii	"long int\000"
+ 961      20696E74 
+ 961      00
+ 962              	.LASF16:
+ 963 0269 6C6F6E67 		.ascii	"long double\000"
+ 963      20646F75 
+ 963      626C6500 
+ARM GAS  C:\Users\LENOVO\AppData\Local\Temp\cclLxGOx.s 			page 21
+
+
+ 964              	.LASF0:
+ 965 0275 7369676E 		.ascii	"signed char\000"
+ 965      65642063 
+ 965      68617200 
+ 966              	.LASF33:
+ 967 0281 43794465 		.ascii	"CyDelay\000"
+ 967      6C617900 
+ 968              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
